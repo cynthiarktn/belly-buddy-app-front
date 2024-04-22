@@ -1,15 +1,37 @@
-import React from 'react';
-import RegisterPage from './view/RegisterPage';
-// Importez BrowserRouter et Route si vous utilisez React Router
+import React, { useContext } from 'react';
+import { Route, Routes, Navigate } from "react-router-dom";
+import { AuthContext } from "./context/AuthContext";
+import RegisterView from './view/RegisterView';
+import LoginView from "./view/LoginView"
+import GuestHeader from "./components/GuestHeader";
+import UserHeader from "./components/UserHeader";
+import DashboardView from "./view/DashboardView";
+import WelcomeView from "./view/WelcomeView";
 
-const App = () => {
+
+export default function App() {
+  const {isLoggedIn} = useContext(AuthContext);
   return (
-    <div>
-      {/* Configurez vos routes ici si vous utilisez React Router */}
-      <RegisterPage />
-      {/* D'autres composants ou vues */}
-    </div>
-  );
-};
+    <>
+      {isLoggedIn ? <UserHeader /> : <GuestHeader />}
 
-export default App;
+      <Routes>
+        {isLoggedIn ? (
+          <>
+            <Route path="/dashboard" element={<DashboardView />} />
+            <Route path="/login" element={<DashboardView />} />
+            <Route path="/logout" element={<WelcomeView />} />
+
+          </>
+        ) : (
+          <>
+            <Route path="/login" element={<LoginView />} />
+            <Route path="/register" element={<RegisterView />} />
+            <Route path="/welcome" element={<WelcomeView />} />
+            <Route path="/" element={<WelcomeView />} />
+          </>
+        )}
+      </Routes>
+    </>
+  );
+}
