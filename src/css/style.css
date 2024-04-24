@@ -1,68 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
 body {
   font-family: 'Noto Sans', sans-serif }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
   font-weight: 700; }
+/* src/css/style.css */
 
-/* Header Styles */
-.navbar-custom {
-  background-color: #FFEEDD; /* Votre couleur d'arrière-plan */
-}
-
-.navbar-brand img {
-  width: 150px; /* La largeur de votre logo */
+.custom-header {
+  background-color: #DDEDAA;
 }
 
-.nav-link-custom {
-  color: red; /* Votre couleur de texte pour les liens */
-  margin-right: 20px; /* L'espacement à droite de vos liens */
-  text-decoration: none; /* Aucun soulignement pour vos liens */
+.custom-nav-link {
+  font-family: 'Playfair Display', serif;
+  color: #1B134B; /* Couleur par défaut des liens */
+  font-weight: 900; /* Rendre les liens gras */
 }
 
-/* Ajoutez :hover pour les liens si vous souhaitez changer le style au survol */
-.nav-link-custom:hover {
-  color: darkred; /* Couleur au survol */
+.custom-nav-link:hover {
+  color: #E66F00; /* Couleur des liens au survol */
 }
 
-/* Styles pour le lien de déconnexion qui n'utilise pas <Link> */
-.logout-link {
-  cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
-  color: red; /* Couleur du lien de déconnexion */
-  margin-right: 20px; /* Espacement */
+.custom-nav-link:active {
+  color: #FF0051; /* Couleur des liens lorsqu'ils sont actifs */
 }
 
-.logout-link:hover {
-  color: darkred; /* Couleur au survol */
-}
-
-
-/* Side bar*/
-.sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  min-height: 100vh !important;
-  z-index: 100;
-  padding: 48px 0 0;
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-}
-#sidebar-wrapper{
-  min-height: 100vh !important;
-  width: 100vw;
-  margin-left: -1rem;
-  -webkit-transition: margin .25s ease-out;
-  -moz-transition: margin .25s ease-out;
-  -o-transition: margin .25s ease-out;
-  transition: margin .25s ease-out;
-}
-#sidebar-wrapper .sidebar-heading {
-  padding: 0.875rem 1.25rem;
-  font-size: 1.2rem;
-}
-
-#page-content-wrapper {
-  min-width: 0;
-  width: 100%;
-}
