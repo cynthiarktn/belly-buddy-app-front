@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+.body-text {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 18px;
+}
+
+.heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+}
+
+/* Text Color */
+
+.dark-blue {
+  color: #1B134B;
+}
+
+
+/* Styles for navbar */
+.navbar {
+  background-color: #fff; /* Changer selon votre choix de design */
+  padding: 1rem 2rem; /* Ajoutez du padding pour l'espacement */
+}
+
+/* Logo style */
+.logo {
+  width: 125px; /* Ou la taille que vous préférez */
+  height: auto;
+  padding: 10px 10px;
+}
+
+
+/* Form style */
+.form-container {
+  background-color: #FDFDFD;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+

@@ -3,9 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import { AuthProvider } from './context/AuthContext';
-import "./css/minty.css";
-import "./css/fontawesome.all.min.css";
-import "./css/style.css";
+import "./pages/css/minty.css";
+import "./pages/css/style.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
