@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import {Container, Nav, Navbar} from 'react-bootstrap';
 import { AuthContext } from '../../context/AuthContext';
-import '../../pages/css/style.css'
+import '../../css/style.css'
 import { Link, useNavigate } from "react-router-dom";
 import logo from '../../assets/img/logo-belly-buddy.png';
 
@@ -12,7 +12,7 @@ const UserHeader = () => {
   const handleLogout = (event) => {
     event.preventDefault();
     logout();
-    navigate("/login");
+    navigate("/");
   }
 
   return (
@@ -26,11 +26,11 @@ const UserHeader = () => {
           </Link>
           <hr/>
           <Nav className="flex-column mb-auto">
-            <Nav.Link as={Link} to="/dashboard" className="heading text-dark fw-bold">Trouver une recette</Nav.Link>
+            <Nav.Link as={Link} to="/findRecipe" className="heading text-dark fw-bold">Trouver une recette</Nav.Link>
             <Nav.Link as={Link} to="/inventory" className="heading text-dark fw-bold">Mon inventaire</Nav.Link>
             <Nav.Link as={Link} to="/favoriteRecipes" className="heading text-dark fw-bold">Mes favoris</Nav.Link>
             <Nav.Link as={Link} to="/profile" className="heading text-dark fw-bold">Mon profil</Nav.Link>
-            <Nav.Link as={Link} to="/logout" className="heading text-dark fw-bold">Se déconnecter</Nav.Link>
+            <Nav.Link onClick={handleLogout} className="heading text-dark fw-bold">Se déconnecter</Nav.Link>
           </Nav>
         </div>
       )}

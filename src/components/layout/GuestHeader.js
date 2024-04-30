@@ -12,7 +12,7 @@ const GuestHeader = () => {
       expand='lg'
     >
       <Container className="d-flex justify-content-between align-items-center">
-        <Link to={'/welcome'}>
+        <Link to={'/home'}>
           <Navbar.Brand>
             <img className="logo" src={logo} alt="logo"/>
           </Navbar.Brand>

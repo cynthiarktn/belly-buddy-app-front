@@ -1,16 +1,24 @@
-import React, { useContext } from 'react';
-import { Route, Routes, Navigate } from "react-router-dom";
-import { AuthContext } from './context/AuthContext';
-import RegisterView from './pages/authentication/RegisterView';
-import LoginView from "./pages/authentication/LoginView"
-import GuestHeader from "./components/layout/GuestHeader";
+import React, {useContext} from 'react';
+import {AuthContext} from "./context/AuthContext";
+import {Route, Routes, Navigate} from "react-router-dom";
+import Home from "./pages/Home";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import FindRecipe from "./pages/FindRecipe";
 import UserHeader from "./components/layout/UserHeader";
-import DashboardView from "./pages/DashboardView";
-import Home from "./pages/home/Home";
-
+import GuestHeader from "./components/layout/GuestHeader";
+import Inventory from "./pages/Inventory";
+import Favorites from "./pages/Favorites";
+import UserProfile from "./pages/UserProfile";
 
 export default function App() {
-  const {isLoggedIn} = useContext(AuthContext);
+  const {isLoggedIn, logout} = useContext(AuthContext);
+
+  const handleLogout = () => {
+    const {logout} = useContext(AuthContext);
+    logout();
+  };
+
   return (
     <>
       {isLoggedIn ? <UserHeader /> : <GuestHeader />}
@@ -18,17 +26,20 @@ export default function App() {
       <Routes>
         {isLoggedIn ? (
           <>
-            <Route path="/dashboard" element={<DashboardView />} />
-            <Route path="/login" element={<DashboardView />} />
-            <Route path="/logout" element={<Home />} />
-
+            <Route path="/findRecipe" element={<FindRecipe />} />
+            <Route path="/inventory" element={<Inventory />} />
+            <Route path="/favoriteRecipes" element={<Favorites />} />
+            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/login" element={<FindRecipe />} />
+            <Route path="/" onNavigate={handleLogout} />
           </>
         ) : (
           <>
-            <Route path="/login" element={<LoginView />} />
-            <Route path="/register" element={<RegisterView />} />
-            <Route path="/welcome" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/" element={<Home />} />
+            <Route path="*" element={<Navigate to="/login" />} />
           </>
         )}
       </Routes>

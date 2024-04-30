@@ -1,35 +1,25 @@
 import React, {createContext, useEffect, useState} from "react";
-import { UseAuth } from "../hooks/useAuth";
-export const AuthContext = createContext({
-  isLoggedIn: false,
-  login: async (username, password) => {},
-  register: async (username, email, password) => {},
-  logout: () => {},
-});
 
-// permet de gérer l'état de connexion
+export const AuthContext = createContext();
+
+// Initial state
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [authToken, setAuthToken] = useState(localStorage.getItem('accessToken') || null);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!authToken);
+  const [ userId, setUserId ] = useState(null);
 
-  // Vérifier si l'utilisateur est déjà connecté lors de l'initialisation du composant
-  useEffect(() => {
-    const token = sessionStorage.getItem('token');
-    if (token) {
-      setIsLoggedIn(true);
-    }
-  }, []);
-
-  const authController = {
-    isLoggedIn,
-    login: (username, password) => login(username, password, setIsLoggedIn),
-    register: (username, password, email) => register(true, username, password, email, setIsLoggedIn),
-    logout: () => logout(setIsLoggedIn)
-  };
+  const logout = () => {
+    localStorage.removeItem('accessToken');
+    setAuthToken(null);
+    setIsLoggedIn(false);
+    setUserId(null);
+  }
 
   return (
-    <AuthContext.Provider value={authController}>
+    <AuthContext.Provider value={{authToken, setAuthToken, isLoggedIn, setIsLoggedIn, userId, setUserId, logout}}>
       {children}
     </AuthContext.Provider>
   );
 };
 
+export default AuthContext;
