@@ -1,8 +1,7 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button, Form, FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import config from "../config";
-import AuthContext from "../context/AuthContext";
-import {Link} from "react-router-dom";
+
 
 const UserProfile = () => {
   const [user, setUser] = useState({
@@ -10,8 +9,6 @@ const UserProfile = () => {
     email: "",
     password: "",
   });
-
-  const {setAuthToken, setIsLoggedIn, setUserId} = useContext(AuthContext);
 
   useEffect(() => {
     const token = localStorage.getItem('accessToken');

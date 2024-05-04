@@ -19,13 +19,13 @@
 
 /* Styles for navbar */
 .navbar {
-  background-color: #fff; /* Changer selon votre choix de design */
-  padding: 1rem 2rem; /* Ajoutez du padding pour l'espacement */
+  background-color: #fff;
+  padding: 1rem 2rem;
 }
 
 /* Logo style */
 .logo {
-  width: 125px; /* Ou la taille que vous préférez */
+  width: 150px;
   height: auto;
   padding: 10px 10px;
 }
@@ -42,4 +42,63 @@
   margin-right: auto;
 }
 
+/* Container */
+.app-container.logged-in {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
+.app-container.logged-in .app-content {
+  flex-grow: 1;
+  margin-left: 25%; /* Ajoutez cette ligne */
+}
+
+.app-content {
+  flex-grow: 1;
+}
+
+
+/* Augmentation de la spécificité en incluant plus de sélecteurs */
+.nav .nav-link.default-link {
+  color: #1B134B !important;
+}
+
+.nav .nav-link.active-link {
+  color: #D70044 !important;
+}
+
+.nav .nav-link.default-link:hover {
+  color: #F47500 !important;
+}
+
+.nav .nav-link.active-link:hover {
+  color: #F47500 !important;
+}
+
+/* Utilisation d'un identifiant pour augmenter la spécificité */
+#responsive-navbar-nav .nav-link.default-link {
+  color: #1B134B !important;
+}
+
+#responsive-navbar-nav .nav-link.active-link {
+  color: #D70044 !important;
+}
+
+#responsive-navbar-nav .nav-link.default-link:hover {
+  color: #F47500 !important;
+}
+
+#responsive-navbar-nav .nav-link.active-link:hover {
+  color: #F47500 !important;
+}
+
+.card .card-title.dark-blue {
+  color: #1B134B;
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: medium;
+
+}

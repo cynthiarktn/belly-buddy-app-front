@@ -1,9 +1,12 @@
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
-import logo from '../../assets/img/logo-belly-buddy.png';
+import {Link, useLocation} from 'react-router-dom';
+import logo from '../../../public/logo-belly-buddy.png';
+import '../../css/style.css'
 
 const GuestHeader = () => {
+  const location = useLocation();
+
   return (
     <Navbar
       className='mb-5 bg-secondary-subtle'
@@ -20,8 +23,12 @@ const GuestHeader = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/login" className="heading dark-blue fw-bold">Connexion</Nav.Link>
-            <Nav.Link as={Link} to="/register" className="heading dark-blue fw-bold">Inscription</Nav.Link>
+            <Nav.Link as={Link} to="/login"
+                      className={`heading fw-bold ${location.pathname === "/login" ? "active-link" : "default-link"}`}>
+              Se connecter</Nav.Link>
+            <Nav.Link as={Link} to="/register"
+                      className={`heading fw-bold ${location.pathname === "/register" ? "active-link" : "default-link"}`}>
+              S'inscrire</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

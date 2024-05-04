@@ -15,34 +15,37 @@ export default function App() {
   const {isLoggedIn, logout} = useContext(AuthContext);
 
   const handleLogout = () => {
-    const {logout} = useContext(AuthContext);
     logout();
   };
 
   return (
     <>
-      {isLoggedIn ? <UserHeader /> : <GuestHeader />}
+      <div className={`app-container ${isLoggedIn ? 'logged-in' : ''}`}>
+        {isLoggedIn ? <UserHeader /> : <GuestHeader />}
 
-      <Routes>
-        {isLoggedIn ? (
-          <>
-            <Route path="/findRecipe" element={<FindRecipe />} />
-            <Route path="/inventory" element={<Inventory />} />
-            <Route path="/favoriteRecipes" element={<Favorites />} />
-            <Route path="/profile" element={<UserProfile />} />
-            <Route path="/login" element={<FindRecipe />} />
-            <Route path="/" onNavigate={handleLogout} />
-          </>
-        ) : (
-          <>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<Navigate to="/login" />} />
-          </>
-        )}
-      </Routes>
+        <div className="app-content">
+          <Routes>
+            {isLoggedIn ? (
+              <>
+                <Route path="/findRecipe" element={<FindRecipe />} />
+                <Route path="/inventory" element={<Inventory />} />
+                <Route path="/favoriteRecipes" element={<Favorites />} />
+                <Route path="/profile" element={<UserProfile />} />
+                <Route path="/login" element={<FindRecipe />} />
+                <Route path="/" onNavigate={handleLogout} />
+              </>
+            ) : (
+              <>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/" element={<Home />} />
+                <Route path="*" element={<Navigate to="/login" />} />
+              </>
+            )}
+          </Routes>
+        </div>
+      </div>
     </>
   );
 }
